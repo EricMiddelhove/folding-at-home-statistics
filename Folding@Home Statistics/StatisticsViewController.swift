@@ -32,7 +32,7 @@ class StatisticsViewController: UIViewController{
         
         //Setting up format
         usernameLabel.text = userData.name ?? "No Name"
-        creditData.text = String(userData.credit ?? 0)
+        creditData.text = String(userData.score ?? 0)
         rankData.text = userData.rank == 0 || userData.rank == nil ? "Unranked" : String(userData.rank!) 
         
         lastFinishedData.text = userData.last

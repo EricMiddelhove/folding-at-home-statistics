@@ -28,7 +28,7 @@ class NetworkHandler{
         print(":" + username + ":")
         
         
-        let url = URL(string: "https://stats.foldingathome.org/api/donor/" + username)!
+        let url = URL(string: "https://api.foldingathome.org/user/" + username)!
         var req = URLRequest(url: url)
         let sem = DispatchSemaphore(value: 0)
         var userData: UserData?
@@ -62,6 +62,7 @@ class NetworkHandler{
             }
             
             do{
+                print(String(data: data, encoding: .utf8));
                 try userData = self.jsonDecoder.decode(UserData.self, from: data)
             }catch{
                 print("decoding error")
@@ -80,7 +81,7 @@ class NetworkHandler{
 
 class UserData: Codable{
     var name: String?
-    var credit: Int?
+    var score: Int?
     var last: String?
     var rank: Int?
     var teams: [TeamData]?

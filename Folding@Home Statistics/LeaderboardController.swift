@@ -132,7 +132,7 @@ class LeaderboardController: UIViewController {
             
             for j in 0 ... userDataMap.count - 2{
                 
-                if userDataMap[usernames[j]]?.credit ?? 0 < userDataMap[usernames[j + 1]]?.credit ?? 0 {
+                if userDataMap[usernames[j]]?.score ?? 0 < userDataMap[usernames[j + 1]]?.score ?? 0 {
                     
                     let tmp = usernames[j]
                     usernames[j] = usernames[j + 1]
@@ -170,7 +170,7 @@ extension LeaderboardController: UITableViewDelegate{
         
         dataToDetailed = userDataMap[usernames[indexPath.row]]
         
-        if dataToDetailed?.credit != nil {
+        if dataToDetailed?.score != nil {
             performSegue(withIdentifier: "toDetailedInfo", sender: self)
         }
     }
@@ -201,7 +201,7 @@ extension LeaderboardController: UITableViewDataSource{
         uname.textColor = uname.text == username ? UIColor(cgColor: CGColor(srgbRed: 0.99608, green: 0.34118, blue: 0.00392, alpha: 0.65)) : .white
         
         
-        let c = userDataMap[usernames[indexPath.row]]?.credit
+        let c = userDataMap[usernames[indexPath.row]]?.score
         
         // printing credit data
         // MARK: Problem with multithreading will occur
